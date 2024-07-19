@@ -1,4 +1,4 @@
-main.d main.o: .././main.c \
+ADC/ADC.d ADC/ADC.o: ../ADC/ADC.c ../ADC/ADC.h \
  d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -12,13 +12,9 @@ main.d main.o: .././main.c \
  d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h \
- d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h \
- d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
- d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
- .././LCD/LCD.h .././ADC/ADC.h
+ d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h
+
+../ADC/ADC.h:
 
 d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -47,17 +43,3 @@ d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include
 d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
 
 d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
-
-d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
-
-d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stdarg.h:
-
-d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h:
-
-d:\programas\microchip\ studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h:
-
-.././LCD/LCD.h:
-
-.././ADC/ADC.h:

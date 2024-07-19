@@ -33,14 +33,14 @@ void inicio(char a)
 void dato_a_mostrar(char a)
 {
 	if(a & 1)				//0000 0001, el  a&1 es una operación bitwise, si el primer bit menos signfiativo es 1, la condición es verdadera
-	PORTD |= (1<<PORTD0);
+	PORTB |= (1<<3);
 	else
-	PORTD &= ~(1<<PORTD0);
+	PORTB &= ~(1<<3);
 	
 	if(a & 2)			   //0000 0010, ahora verifica el segundo bit menos significativo, y si es 1, la condición es verdadera
-	PORTD |= (1<<PORTD1);
+	PORTB |= (1<<2);
 	else
-	PORTD &= ~(1<<PORTD1);
+	PORTB &= ~(1<<2);
 	
 	if(a & 4)				//0000 0100
 	PORTD |= (1<<PORTD2);
@@ -86,10 +86,10 @@ void Lcd_Clear()    //Limpia la pantalla LCD
 
 void Lcd_Set_Cursor(char a, char b)
 {
-	if(a == 1)
+	if(a == 0)
 		inicio(0x80 + b);  //Posicionarse en la linea 1 y se suma la columna 
 	
-	else if(a == 2)
+	else if(a == 1)
 		inicio(0xC0 + b);  //Posicionarse en la linea 2  y se suma la columna
 }
 
