@@ -36,6 +36,9 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 UART/UART.o
+ .data          0x00000000        0x0 UART/UART.o
+ .bss           0x00000000        0x0 UART/UART.o
  .text          0x00000000        0x0 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .data          0x00000000        0x0 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
  .bss           0x00000000        0x0 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
@@ -147,6 +150,7 @@ LOAD D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/at
 LOAD ADC/ADC.o
 LOAD LCD/LCD.o
 LOAD main.o
+LOAD UART/UART.o
 START GROUP
 LOAD d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
@@ -256,7 +260,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xa5a
+.text           0x00000000      0xef0
  *(.vectors)
  .vectors       0x00000000       0x68 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -264,45 +268,45 @@ END GROUP
  *(.vectors)
  *(.progmem.gcc*)
  .progmem.gcc_sw_table.main
-                0x00000068       0xb4 main.o
-                0x0000011c                . = ALIGN (0x2)
-                0x0000011c                __trampolines_start = .
+                0x00000068       0xf0 main.o
+                0x00000158                . = ALIGN (0x2)
+                0x00000158                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x0000011c        0x0 linker stubs
+ .trampolines   0x00000158        0x0 linker stubs
  *(.trampolines*)
-                0x0000011c                __trampolines_end = .
+                0x00000158                __trampolines_end = .
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem*)
-                0x0000011c                . = ALIGN (0x2)
+                0x00000158                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x0000011c                __ctors_start = .
+                0x00000158                __ctors_start = .
  *(.ctors)
-                0x0000011c                __ctors_end = .
-                0x0000011c                __dtors_start = .
+                0x00000158                __ctors_end = .
+                0x00000158                __dtors_start = .
  *(.dtors)
-                0x0000011c                __dtors_end = .
+                0x00000158                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x0000011c        0x0 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
-                0x0000011c                __init
+ .init0         0x00000158        0x0 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
+                0x00000158                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x0000011c        0xc D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
+ .init2         0x00000158        0xc D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000128       0x16 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
-                0x00000128                __do_copy_data
- .init4         0x0000013e       0x10 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
-                0x0000013e                __do_clear_bss
+ .init4         0x00000164       0x16 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
+                0x00000164                __do_copy_data
+ .init4         0x0000017a       0x10 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
+                0x0000017a                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -313,80 +317,91 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000014e        0x8 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
+ .init9         0x0000018a        0x8 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
  *(.init9)
  *(.text)
- .text          0x00000156        0x4 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
-                0x00000156                __vector_22
-                0x00000156                __vector_1
-                0x00000156                __vector_24
-                0x00000156                __vector_12
-                0x00000156                __bad_interrupt
-                0x00000156                __vector_6
-                0x00000156                __vector_3
-                0x00000156                __vector_23
-                0x00000156                __vector_25
-                0x00000156                __vector_11
-                0x00000156                __vector_13
-                0x00000156                __vector_17
-                0x00000156                __vector_19
-                0x00000156                __vector_7
-                0x00000156                __vector_5
-                0x00000156                __vector_4
-                0x00000156                __vector_9
-                0x00000156                __vector_2
-                0x00000156                __vector_15
-                0x00000156                __vector_8
-                0x00000156                __vector_14
-                0x00000156                __vector_10
-                0x00000156                __vector_16
-                0x00000156                __vector_18
-                0x00000156                __vector_20
-                0x0000015a                . = ALIGN (0x2)
+ .text          0x00000192        0x4 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
+                0x00000192                __vector_22
+                0x00000192                __vector_1
+                0x00000192                __vector_24
+                0x00000192                __vector_12
+                0x00000192                __bad_interrupt
+                0x00000192                __vector_6
+                0x00000192                __vector_3
+                0x00000192                __vector_23
+                0x00000192                __vector_25
+                0x00000192                __vector_11
+                0x00000192                __vector_13
+                0x00000192                __vector_17
+                0x00000192                __vector_19
+                0x00000192                __vector_7
+                0x00000192                __vector_5
+                0x00000192                __vector_4
+                0x00000192                __vector_9
+                0x00000192                __vector_2
+                0x00000192                __vector_15
+                0x00000192                __vector_8
+                0x00000192                __vector_14
+                0x00000192                __vector_10
+                0x00000192                __vector_16
+                0x00000192                __vector_20
+                0x00000196                . = ALIGN (0x2)
  *(.text.*)
- .text.initADC  0x0000015a       0x40 ADC/ADC.o
-                0x0000015a                initADC
+ .text.initADC  0x00000196       0x40 ADC/ADC.o
+                0x00000196                initADC
  .text.dato_a_mostrar
-                0x0000019a       0x92 LCD/LCD.o
-                0x0000019a                dato_a_mostrar
- .text.inicio   0x0000022c       0x30 LCD/LCD.o
-                0x0000022c                inicio
+                0x000001d6       0x92 LCD/LCD.o
+                0x000001d6                dato_a_mostrar
+ .text.inicio   0x00000268       0x30 LCD/LCD.o
+                0x00000268                inicio
  .text.Lcd_Init8bits
-                0x0000025c       0x6e LCD/LCD.o
-                0x0000025c                Lcd_Init8bits
+                0x00000298       0x6e LCD/LCD.o
+                0x00000298                Lcd_Init8bits
  .text.Lcd_Clear
-                0x000002ca        0x8 LCD/LCD.o
-                0x000002ca                Lcd_Clear
+                0x00000306        0x8 LCD/LCD.o
+                0x00000306                Lcd_Clear
  .text.Lcd_Set_Cursor
-                0x000002d2       0x1c LCD/LCD.o
-                0x000002d2                Lcd_Set_Cursor
+                0x0000030e       0x1c LCD/LCD.o
+                0x0000030e                Lcd_Set_Cursor
  .text.Lcd_Write_Char
-                0x000002ee       0x30 LCD/LCD.o
-                0x000002ee                Lcd_Write_Char
+                0x0000032a       0x30 LCD/LCD.o
+                0x0000032a                Lcd_Write_Char
  .text.Lcd_Write_String
-                0x0000031e       0x2c LCD/LCD.o
-                0x0000031e                Lcd_Write_String
- .text.setup    0x0000034a       0x1e main.o
-                0x0000034a                setup
- .text.main     0x00000368      0x624 main.o
-                0x00000368                main
+                0x0000035a       0x2c LCD/LCD.o
+                0x0000035a                Lcd_Write_String
+ .text.setup    0x00000386       0x22 main.o
+                0x00000386                setup
+ .text.main     0x000003a8      0x9ec main.o
+                0x000003a8                main
  .text.__vector_21
-                0x0000098c       0x6e main.o
-                0x0000098c                __vector_21
+                0x00000d94       0x6e main.o
+                0x00000d94                __vector_21
+ .text.__vector_18
+                0x00000e02       0x28 main.o
+                0x00000e02                __vector_18
+ .text.initUART9600
+                0x00000e2a       0x36 UART/UART.o
+                0x00000e2a                initUART9600
+ .text.writeTextUART
+                0x00000e60       0x22 UART/UART.o
+                0x00000e60                writeTextUART
+ .text.writeUART
+                0x00000e82        0xe UART/UART.o
+                0x00000e82                writeUART
  .text.libgcc.div
-                0x000009fa       0x28 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
-                0x000009fa                _div
-                0x000009fa                __divmodhi4
- .text.libgcc   0x00000a22        0xc d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
-                0x00000a22                __tablejump2__
+                0x00000e90       0x28 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_divmodhi4.o)
+                0x00000e90                _div
+                0x00000e90                __divmodhi4
+ .text.libgcc   0x00000eb8        0xc d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_tablejump2.o)
+                0x00000eb8                __tablejump2__
  .text.libgcc.div
-                0x00000a2e       0x28 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
-                0x00000a2e                __udivmodhi4
-                0x00000a56                . = ALIGN (0x2)
+                0x00000ec4       0x28 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_udivmodhi4.o)
+                0x00000ec4                __udivmodhi4
+                0x00000eec                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000a56        0x0 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000a56                _exit
-                0x00000a56                exit
+ .fini9         0x00000eec        0x0 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000eec                _exit
+                0x00000eec                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -405,11 +420,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000a56        0x4 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000eec        0x4 d:/programas/microchip studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000a5a                _etext = .
+                0x00000ef0                _etext = .
 
-.data           0x00800100       0x1c load address 0x00000a5a
+.data           0x00800100      0x124 load address 0x00000ef0
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -417,50 +432,56 @@ END GROUP
                 0x00800100                lista3
  .data.lista    0x00800104        0xa main.o
                 0x00800104                lista
- .data.cambio   0x0080010e        0x1 main.o
-                0x0080010e                cambio
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  .rodata.str1.1
-                0x0080010f        0xc main.o
+                0x0080010e      0x116 main.o
  *(.gnu.linkonce.r*)
-                0x0080011c                . = ALIGN (0x2)
- *fill*         0x0080011b        0x1 
-                0x0080011c                _edata = .
-                0x0080011c                PROVIDE (__data_end, .)
+                0x00800224                . = ALIGN (0x2)
+                0x00800224                _edata = .
+                0x00800224                PROVIDE (__data_end, .)
 
-.bss            0x0080011c       0x13
-                0x0080011c                PROVIDE (__bss_start, .)
+.bss            0x00800224       0x18
+                0x00800224                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.unidades  0x0080011c        0x2 main.o
-                0x0080011c                unidades
- .bss.decenas   0x0080011e        0x2 main.o
-                0x0080011e                decenas
- .bss.centenas  0x00800120        0x2 main.o
-                0x00800120                centenas
- .bss.millares  0x00800122        0x2 main.o
-                0x00800122                millares
- .bss.caso      0x00800124        0x1 main.o
-                0x00800124                caso
- .bss.Val2      0x00800125        0x1 main.o
-                0x00800125                Val2
- .bss.Val1      0x00800126        0x1 main.o
-                0x00800126                Val1
+ .bss.receivedChar
+                0x00800224        0x1 main.o
+                0x00800224                receivedChar
+ .bss.unidades  0x00800225        0x2 main.o
+                0x00800225                unidades
+ .bss.decenas   0x00800227        0x2 main.o
+                0x00800227                decenas
+ .bss.centenas  0x00800229        0x2 main.o
+                0x00800229                centenas
+ .bss.millares  0x0080022b        0x2 main.o
+                0x0080022b                millares
+ .bss.cambio    0x0080022d        0x2 main.o
+                0x0080022d                cambio
+ .bss.menu2     0x0080022f        0x1 main.o
+                0x0080022f                menu2
+ .bss.activa    0x00800230        0x1 main.o
+                0x00800230                activa
+ .bss.caso      0x00800231        0x1 main.o
+                0x00800231                caso
+ .bss.Val2      0x00800232        0x1 main.o
+                0x00800232                Val2
+ .bss.Val1      0x00800233        0x1 main.o
+                0x00800233                Val1
  *(COMMON)
- COMMON         0x00800127        0x8 main.o
-                0x00800127                lista1
-                0x0080012b                lista2
-                0x0080012f                PROVIDE (__bss_end, .)
-                0x00000a5a                __data_load_start = LOADADDR (.data)
-                0x00000a76                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800234        0x8 main.o
+                0x00800234                lista1
+                0x00800238                lista2
+                0x0080023c                PROVIDE (__bss_end, .)
+                0x00000ef0                __data_load_start = LOADADDR (.data)
+                0x00001014                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0080012f        0x0
+.noinit         0x0080023c        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x0080012f                _end = .
+                0x0080023c                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -506,6 +527,7 @@ END GROUP
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 LCD/LCD.o
  .comment       0x00000030       0x31 main.o
+ .comment       0x00000030       0x31 UART/UART.o
 
 .note.gnu.avr.deviceinfo
                 0x00000000       0x40
@@ -527,59 +549,68 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xb0
+.debug_aranges  0x00000000       0xe8
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 ADC/ADC.o
  .debug_aranges
                 0x00000020       0x60 LCD/LCD.o
  .debug_aranges
-                0x00000080       0x30 main.o
+                0x00000080       0x38 main.o
+ .debug_aranges
+                0x000000b8       0x30 UART/UART.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xf44
+.debug_info     0x00000000     0x1308
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4       0x82 ADC/ADC.o
  .debug_info    0x00000676      0x4de LCD/LCD.o
- .debug_info    0x00000b54      0x3f0 main.o
+ .debug_info    0x00000b54      0x6bf main.o
+ .debug_info    0x00001213       0xf5 UART/UART.o
 
-.debug_abbrev   0x00000000      0x8a4
+.debug_abbrev   0x00000000      0x905
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_abbrev  0x000005a2       0x4f ADC/ADC.o
  .debug_abbrev  0x000005f1      0x168 LCD/LCD.o
- .debug_abbrev  0x00000759      0x14b main.o
+ .debug_abbrev  0x00000759       0xf5 main.o
+ .debug_abbrev  0x0000084e       0xb7 UART/UART.o
 
-.debug_line     0x00000000      0xbbc
+.debug_line     0x00000000      0xfb8
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000134       0xca ADC/ADC.o
  .debug_line    0x000001fe      0x320 LCD/LCD.o
- .debug_line    0x0000051e      0x69e main.o
+ .debug_line    0x0000051e      0x96e main.o
+ .debug_line    0x00000e8c      0x12c UART/UART.o
 
-.debug_frame    0x00000000      0x13c
+.debug_frame    0x00000000      0x1a0
  *(.debug_frame)
  .debug_frame   0x00000000       0x24 ADC/ADC.o
  .debug_frame   0x00000024       0xb8 LCD/LCD.o
- .debug_frame   0x000000dc       0x60 main.o
+ .debug_frame   0x000000dc       0x80 main.o
+ .debug_frame   0x0000015c       0x44 UART/UART.o
 
-.debug_str      0x00000000      0x4ce
+.debug_str      0x00000000      0x540
  *(.debug_str)
  .debug_str     0x00000000      0x208 D:/Programas/Microchip studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208      0x16d ADC/ADC.o
                                 0x1a1 (size before relaxing)
  .debug_str     0x00000375       0xd9 LCD/LCD.o
                                 0x26a (size before relaxing)
- .debug_str     0x0000044e       0x80 main.o
+ .debug_str     0x0000044e       0xcb main.o
                                 0x29c (size before relaxing)
+ .debug_str     0x00000519       0x27 UART/UART.o
+                                0x1dd (size before relaxing)
 
-.debug_loc      0x00000000      0x469
+.debug_loc      0x00000000      0x4a4
  *(.debug_loc)
  .debug_loc     0x00000000      0x3cb LCD/LCD.o
- .debug_loc     0x000003cb       0x9e main.o
+ .debug_loc     0x000003cb       0x92 main.o
+ .debug_loc     0x0000045d       0x47 UART/UART.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -599,11 +630,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x80
+.debug_ranges   0x00000000       0xa8
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x10 ADC/ADC.o
  .debug_ranges  0x00000010       0x50 LCD/LCD.o
- .debug_ranges  0x00000060       0x20 main.o
+ .debug_ranges  0x00000060       0x28 main.o
+ .debug_ranges  0x00000088       0x20 UART/UART.o
 
 .debug_macro
  *(.debug_macro)
